@@ -9,7 +9,7 @@ class PropertiesModel extends Equatable {
   final String? description;
   final String? price;
   final String? location;
-  final String? images;
+  final List<String>? images;
   final String? video;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -37,7 +37,14 @@ class PropertiesModel extends Equatable {
       description: json['description'] as String?,
       price: json['price'] as String?,
       location: json['location'] as String?,
-      images: json['images'] as String?,
+      images: (json['images'] != null)
+          ? (json['images'] as String)
+              .replaceAll('[', '')
+              .replaceAll(']', '')
+              .split(',')
+              .map((e) => e.replaceAll('"', '').trim())
+              .toList()
+          : null, // Parse JSON string to List<String>,
       video: json['video'] as String?,
       createdAt: json['created_at'] == null
           ? null

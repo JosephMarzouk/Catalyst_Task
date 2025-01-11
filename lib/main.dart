@@ -1,6 +1,9 @@
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Data/repos/AllBookingRepoImp.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/manager/cubit/all_booking_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/views/AllBookingView.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/Data/repos/AllPropertiesRepoImp.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/Presentation/Views/AllPropertiesView.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/Presentation/manager/cubit/properties_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/Data/repos/AllUsersRepoImp.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/manager/cubit/all_users_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/views/AllUsersView.dart';
@@ -26,10 +29,13 @@ class CatalystApp extends StatelessWidget {
         BlocProvider<AllBookingCubit>(
           create: (context) => AllBookingCubit(getIt.get<AllBookingRepoImp>()),
         ),
+        BlocProvider<PropertiesCubit>(
+          create: (context) => PropertiesCubit(getIt.get<AllPropertiesRepoImp>()),
+        ),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AllBookingsView(),
+        home: PropertiesPage(),
       ),
     );
   }

@@ -6,6 +6,6 @@ abstract class AllPropertiesRepo {
   Future<List<PropertiesModel>> createProperty(
       {required Map<String, dynamic> body});
   Future<List<PropertiesModel>> updateProperty(
-      {required Map<String, dynamic> body});
-  Future<List<PropertiesModel>> deleteProperty();
+      {required Map<String, dynamic> body, required String id});
+  Future<List<PropertiesModel>> deleteProperty({required String id});
 }
