@@ -6,7 +6,7 @@
 // import '../widgets/BookingCard.dart';
 
 // class AllBookingsView extends StatelessWidget {
-//   final List<BookingModel> bookings; 
+//   final List<BookingModel> bookings;
 
 //   const AllBookingsView({Key? key, required this.bookings}) : super(key: key);
 
@@ -80,17 +80,16 @@ class AllBookingsView extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 16, color: Colors.red),
                   ),
-                  
                 ],
               ),
             );
           }
-          return  Center(
+          return Center(
             child: GestureDetector(
-              onTap: (){
-                  BlocProvider.of<AllBookingCubit>(context).getAllBookings();
-                },
-              child:const Text(
+              onTap: () {
+                BlocProvider.of<AllBookingCubit>(context).getAllBookings();
+              },
+              child: const Text(
                 'No bookings available.',
                 style: TextStyle(fontSize: 16),
               ),

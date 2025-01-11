@@ -19,13 +19,16 @@ class ApiService {
   }
 
   Future<List<dynamic>> edit(
-      {required String endPoint, required Map<String, dynamic> body, required String id}) async {
+      {required String endPoint,
+      required Map<String, dynamic> body,
+      required String id}) async {
     var response = await _dio.post('$_baseUrl$endPoint/$id', data: body);
 
     return response.data;
   }
 
-  Future<List<dynamic>> delete({required String endPoint,required String id}) async {
+  Future<List<dynamic>> delete(
+      {required String endPoint, required String id}) async {
     var response = await _dio.delete('$_baseUrl$endPoint/$id');
 
     return response.data;

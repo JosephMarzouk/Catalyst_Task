@@ -18,7 +18,6 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
   final TextEditingController startDateController = TextEditingController();
   final TextEditingController endDateController = TextEditingController();
 
-
   Future<void> _selectDate(
       BuildContext context, TextEditingController controller) async {
     final DateTime? picked = await showDatePicker(
@@ -29,8 +28,7 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
     );
     if (picked != null) {
       setState(() {
-        controller.text =
-            picked.toIso8601String().split('T')[0]; 
+        controller.text = picked.toIso8601String().split('T')[0];
       });
     }
   }
@@ -52,7 +50,6 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20),
-                
                 TextFormField(
                   controller: userIdController,
                   decoration: const InputDecoration(
@@ -68,7 +65,6 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
                   },
                 ),
                 const SizedBox(height: 20),
-                
                 TextFormField(
                   controller: propertyIdController,
                   decoration: const InputDecoration(
@@ -84,7 +80,6 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
                   },
                 ),
                 const SizedBox(height: 20),
-                
                 TextFormField(
                   controller: startDateController,
                   decoration: InputDecoration(
@@ -105,7 +100,6 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
                   },
                 ),
                 const SizedBox(height: 20),
-                
                 TextFormField(
                   controller: endDateController,
                   decoration: InputDecoration(
@@ -125,12 +119,10 @@ class _CreateNewBookingState extends State<CreateNewBooking> {
                   },
                 ),
                 const SizedBox(height: 30),
-                
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<AllBookingCubit>(context)
-                          .createBooking(
+                      BlocProvider.of<AllBookingCubit>(context).createBooking(
                         body: {
                           "user_id": userIdController.text,
                           "property_id": propertyIdController.text,

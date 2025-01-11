@@ -1,4 +1,3 @@
-
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/manager/cubit/all_users_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/widgets/CustomFormField.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/widgets/RoleSelection.dart';
@@ -31,7 +30,6 @@ class _CreateNewUserState extends State<CreateNewUser> {
         return;
       }
 
-      
       BlocProvider.of<AllUsersCubit>(context).createNewUser(
         body: {
           "name": nameController.text,
@@ -122,4 +120,3 @@ class _CreateNewUserState extends State<CreateNewUser> {
     );
   }
 }
-

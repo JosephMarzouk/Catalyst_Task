@@ -7,11 +7,9 @@ class AllBookingRepoImp implements AllBookingRepo {
   final ApiService apiService;
   AllBookingRepoImp(this.apiService);
 
-
-
   @override
-  Future<List<BookingModel>> getAllBookings() async{
-   try {
+  Future<List<BookingModel>> getAllBookings() async {
+    try {
       var data = await apiService.get(endPoint: 'users');
       List<BookingModel> bookings = [];
       for (var user in data) {
@@ -24,22 +22,38 @@ class AllBookingRepoImp implements AllBookingRepo {
       rethrow;
     }
   }
-  
+
   @override
-  Future<List<BookingModel>> deleteBookings() {
-    // TODO: implement deleteBookings
-    throw UnimplementedError();
+  Future<List<BookingModel>> deleteBookings({required String id}) async{
+     try {
+      var data = await apiService.delete(endPoint: 'users', id: id);
+      print(data);
+      return (data as List).map((e) => BookingModel.fromJson(e)).toList();
+    } catch (e) {
+      print(e);
+
+      rethrow;
+    }
   }
-  
+
   @override
-  Future<List<BookingModel>> updateBookings({required Map<String, dynamic> body}) {
-    // TODO: implement updateBookings
-    throw UnimplementedError();
+  Future<List<BookingModel>> updateBookings(
+      {required Map<String, dynamic> body,required String id})async {
+    try {
+      var data = await apiService.edit(endPoint: 'users', id: id,body: body);
+      print(data);
+      return (data as List).map((e) => BookingModel.fromJson(e)).toList();
+    } catch (e) {
+      print(e);
+
+      rethrow;
+    }
   }
-  
+
   @override
-  Future<List<BookingModel>> createBooking({required Map<String, dynamic> body}) async {
-   try {
+  Future<List<BookingModel>> createBooking(
+      {required Map<String, dynamic> body}) async {
+    try {
       var data = await apiService.post(endPoint: 'bookings', body: body);
       print(data);
       return (data as List).map((e) => BookingModel.fromJson(e)).toList();
@@ -49,7 +63,4 @@ class AllBookingRepoImp implements AllBookingRepo {
       rethrow;
     }
   }
-  }
-
-
-  
+}

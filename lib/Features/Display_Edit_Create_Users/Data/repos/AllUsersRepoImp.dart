@@ -21,9 +21,9 @@ class AllUsersRepoImp implements AllUserRepo {
   }
 
   @override
-  Future<List<UserModel>> deleteUsers({required String id}) async{
+  Future<List<UserModel>> deleteUsers({required String id}) async {
     try {
-      var data = await apiService.delete(endPoint: 'users',id: id);
+      var data = await apiService.delete(endPoint: 'users', id: id);
       print(data);
       return (data as List).map((e) => UserModel.fromJson(e)).toList();
     } catch (e) {
@@ -116,5 +116,4 @@ class AllUsersRepoImp implements AllUserRepo {
       rethrow;
     }
   }
-  
 }

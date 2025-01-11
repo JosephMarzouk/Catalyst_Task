@@ -1,4 +1,3 @@
-
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Data/repos/AllBookingRepoImp.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/manager/cubit/all_booking_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/views/AllBookingView.dart';
@@ -24,7 +23,7 @@ class CatalystApp extends StatelessWidget {
         BlocProvider<AllUsersCubit>(
           create: (context) => AllUsersCubit(getIt.get<AllUsersRepoImp>()),
         ),
-         BlocProvider<AllBookingCubit>(
+        BlocProvider<AllBookingCubit>(
           create: (context) => AllBookingCubit(getIt.get<AllBookingRepoImp>()),
         ),
       ],

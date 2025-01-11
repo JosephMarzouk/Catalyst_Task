@@ -1,23 +1,23 @@
-import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/Data/models/user_model.dart';
-import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/manager/cubit/all_users_cubit.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Data/models/booking_model/booking_model.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/manager/cubit/all_booking_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/widgets/CustomFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EditUser extends StatelessWidget {
-  final UserModel user;
+class EditBooking extends StatelessWidget {
+  final BookingModel booking;
 
   final TextEditingController newNameController = TextEditingController();
   final TextEditingController newEmailController = TextEditingController();
   final TextEditingController newPhoneController = TextEditingController();
 
-  EditUser({super.key, required this.user});
+  EditBooking({super.key, required this.booking});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Details'),
+        title: const Text('Booking Details'),
         centerTitle: true,
       ),
       body: Padding(
@@ -35,7 +35,7 @@ class EditUser extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Name: ${user.name}',
+                            'start date: ${booking.startDate}',
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -43,39 +43,20 @@ class EditUser extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Email: ${user.email}',
+                            'End date: ${booking.endDate}',
                             style: const TextStyle(fontSize: 16),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Phone: ${user.phone}',
+                            'User name: ${booking.user?.name}',
                             style: const TextStyle(fontSize: 16),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Role: ${user.role}',
+                            'property name: ${booking.property?.name}',
                             style: const TextStyle(fontSize: 16),
                           ),
                         ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: ClipOval(
-                        child: Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: NetworkImage(user.profileImage ??
-                                  'https://via.placeholder.com/150'),
-                              fit: BoxFit.cover,
-                              alignment: Alignment.topCenter,
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                   ],
@@ -108,18 +89,18 @@ class EditUser extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<AllUsersCubit>(context)
-                          .editUser(id: user.id.toString(), body: {
-                        'id': user.id,
-                        'name': newNameController.text.isNotEmpty
+                      BlocProvider.of<AllBookingCubit>(context)
+                          .editBooking(id: booking.id.toString(), body: {
+                        'id': booking.id,
+                        'user name': newNameController.text.isNotEmpty
                             ? newNameController.text
-                            : user.name,
-                        'email': newEmailController.text.isNotEmpty
+                            : booking.user?.name,
+                        'property ID': newEmailController.text.isNotEmpty
                             ? newEmailController.text
-                            : user.email,
-                        'phone': newPhoneController.text.isNotEmpty
+                            : booking.property?.id,
+                        'phone number': newPhoneController.text.isNotEmpty
                             ? newPhoneController.text
-                            : user.phone,
+                            : booking.user?.phone,
                       });
                       Navigator.pop(context);
                     },
@@ -151,13 +132,13 @@ class EditUser extends StatelessWidget {
                       //   ],
                       // );
 
-                      BlocProvider.of<AllUsersCubit>(context).deleteUser(
-                        id: user.id.toString(),
+                      BlocProvider.of<AllBookingCubit>(context).deleteBooking(
+                        id: booking.id.toString(),
                       );
 
                       Navigator.pop(context);
                     },
-                    child: const Text('Delete User'),
+                    child: const Text('Delete Booking'),
                   ),
                 ),
               ],

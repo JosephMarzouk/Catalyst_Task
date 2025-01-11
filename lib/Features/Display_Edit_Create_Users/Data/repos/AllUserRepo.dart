@@ -6,6 +6,7 @@ abstract class AllUserRepo {
   Future<List<UserModel>> getAllOwners();
   Future<List<UserModel>> getAllClients();
   Future<List<UserModel>> createUsers({required Map<String, dynamic> body});
-  Future<List<UserModel>> updateUsers({required Map<String, dynamic> body,required String id});
+  Future<List<UserModel>> updateUsers(
+      {required Map<String, dynamic> body, required String id});
   Future<List<UserModel>> deleteUsers({required String id});
 }

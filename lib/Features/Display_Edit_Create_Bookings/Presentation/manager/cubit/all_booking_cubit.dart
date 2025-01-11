@@ -31,4 +31,26 @@ class AllBookingCubit extends Cubit<AllBookingState> {
       emit(CreateBookingFailure(error: e.toString()));
     }
   }
+
+  Future<void> deleteBooking({required String id}) async {
+    try {
+      emit(DeleteBookingLoading());
+      final booking = await allBookingRepo.deleteBookings(id: id);
+      print(booking);
+      emit(DeleteBookingSucsess());
+    } catch (e) {
+      emit(DeleteBookingFailure(error: e.toString()));
+    }
+  }
+
+   Future<void> editBooking({required Map<String, dynamic> body,required String id}) async {
+    try {
+      emit(UpdateBookingLoading());
+      final booking = await allBookingRepo.updateBookings(body: body,id: id);
+      print(booking);
+      emit(UpdateBookingSucsess());
+    } catch (e) {
+      emit(UpdateBookingFailure(error: e.toString()));
+    }
+  }
 }

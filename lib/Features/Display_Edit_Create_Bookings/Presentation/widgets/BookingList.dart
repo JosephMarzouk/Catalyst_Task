@@ -17,7 +17,7 @@ class UsersList extends StatelessWidget {
           );
         } else if (state is AllBookingSucess) {
           return BookingListView(bookings: state.bookings);
-        }  else if (state is AllBookingFailuer) {
+        } else if (state is AllBookingFailuer) {
           return Center(
             child: Text(state.error),
           );

@@ -10,5 +10,8 @@ void SetupServiceLocator() {
   getIt.registerSingleton<AllUsersRepoImp>(AllUsersRepoImp(ApiService(Dio())));
   // getIt.registerFactory<SubjectBloc>(()=>SubjectBloc());
 
-  getIt.registerSingleton<AllBookingRepoImp>(AllBookingRepoImp(ApiService(Dio())));
+  getIt.registerSingleton<AllBookingRepoImp>(
+      AllBookingRepoImp(ApiService(Dio())));
+
+      
 }

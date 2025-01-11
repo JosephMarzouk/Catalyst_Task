@@ -49,7 +49,6 @@ class UserCard extends StatelessWidget {
                   children: [
                     Text(
                       overflow: TextOverflow.ellipsis,
-                      
                       'Name : ${user.name}',
                       style: TextStyle(
                           fontSize: MediaQuery.sizeOf(context).width * 0.04),
