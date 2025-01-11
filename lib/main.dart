@@ -1,9 +1,10 @@
 
-import 'package:catalyst_technical_task/Features/AllBookings/Data/repos/AllBookingRepoImp.dart';
-import 'package:catalyst_technical_task/Features/AllBookings/Presentation/manager/cubit/all_booking_cubit.dart';
-import 'package:catalyst_technical_task/Features/AllBookings/Presentation/views/AllBookingView.dart';
-import 'package:catalyst_technical_task/Features/AllUsers/Data/repos/AllUsersRepoImp.dart';
-import 'package:catalyst_technical_task/Features/AllUsers/presentation/manager/cubit/all_users_cubit.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Data/repos/AllBookingRepoImp.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/manager/cubit/all_booking_cubit.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/views/AllBookingView.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/Data/repos/AllUsersRepoImp.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/manager/cubit/all_users_cubit.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/views/AllUsersView.dart';
 import 'package:catalyst_technical_task/core/ServiceLocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

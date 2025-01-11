@@ -18,9 +18,9 @@ class ApiService {
     return response.data;
   }
 
-  Future<List<dynamic>> put(
-      {required String endPoint, required Map<String, dynamic> body}) async {
-    var response = await _dio.put('$_baseUrl$endPoint');
+  Future<List<dynamic>> edit(
+      {required String endPoint, required Map<String, dynamic> body, required String id}) async {
+    var response = await _dio.post('$_baseUrl$endPoint/$id', data: body);
 
     return response.data;
   }

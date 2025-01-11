@@ -1,5 +1,5 @@
-import 'package:catalyst_technical_task/Features/AllBookings/Data/repos/AllBookingRepoImp.dart';
-import 'package:catalyst_technical_task/Features/AllUsers/Data/repos/AllUsersRepoImp.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Data/repos/AllBookingRepoImp.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/Data/repos/AllUsersRepoImp.dart';
 import 'package:catalyst_technical_task/core/APIservice.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
