@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:hardwareAccelerated="true"
         android:label="catalyst_technical_task"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

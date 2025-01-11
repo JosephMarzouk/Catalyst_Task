@@ -14,16 +14,16 @@ class AllUsersView extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: const Padding(
+      body:  Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Column(
           children: [
-            Flexible(
-              flex: 1,
-              child: Radiobuttons(),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.3,
+              child: const Radiobuttons(),
             ),
-            Flexible(
-              flex: 2,
+            Container(
+              height: MediaQuery.sizeOf(context).height *0.449,
               child: UsersList(),
             ),
           ],
