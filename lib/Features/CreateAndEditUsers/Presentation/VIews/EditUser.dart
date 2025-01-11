@@ -1,5 +1,5 @@
 import 'package:catalyst_technical_task/Features/AllUsers/presentation/manager/cubit/all_users_cubit.dart';
-import 'package:catalyst_technical_task/Features/CreateNewUser/Presentation/widgets/CustomFormField.dart';
+import 'package:catalyst_technical_task/Features/CreateAndEditUsers/Presentation/widgets/CustomFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:catalyst_technical_task/Features/AllUsers/Data/models/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +28,7 @@ class EditUser extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                
                 Stack(
                   children: [
                     Padding(
@@ -70,8 +71,7 @@ class EditUser extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: NetworkImage(user.profileImage ??
-                                  'https://via.placeholder.com/150'),
+                              image: NetworkImage(user.profileImage?? 'https://via.placeholder.com/150'),
                               fit: BoxFit.cover,
                               alignment: Alignment.topCenter,
                             ),
@@ -81,18 +81,23 @@ class EditUser extends StatelessWidget {
                     ),
                   ],
                 ),
+
                 const SizedBox(height: 30),
+
+                
                 CustomFormField(
                   label: 'New Name',
                   controller: newNameController,
                 ),
                 const SizedBox(height: 20),
+
+                
                 CustomFormField(
                   label: 'New Email',
                   controller: newEmailController,
                   validator: (value) {
                     if (value != null && value.isNotEmpty) {
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                      if (!value.contains('@')) {
                         return 'Invalid email format';
                       }
                     }
@@ -100,32 +105,67 @@ class EditUser extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 20),
+
+                
                 CustomFormField(
                   label: 'New Phone',
                   controller: newPhoneController,
                   keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(height: 30),
+
+               
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<AllUsersCubit>(context).editUser(body: {
+                      BlocProvider.of<AllUsersCubit>(context).editUser(body: 
+                      {
                         'id': user.id,
-                        'name': newNameController.text.isNotEmpty
-                            ? newNameController.text
-                            : user.name,
-                        'email': newEmailController.text.isNotEmpty
-                            ? newEmailController.text
-                            : user.email,
-                        'phone': newPhoneController.text.isNotEmpty
-                            ? newPhoneController.text
-                            : user.phone,
+                        'name': newNameController.text.isNotEmpty ? newNameController.text : user.name,
+                        'email': newEmailController.text.isNotEmpty ? newEmailController.text : user.email,
+                        'phone': newPhoneController.text.isNotEmpty ? newPhoneController.text : user.phone,
                       });
                       Navigator.pop(context);
                     },
                     child: const Text('Submit changes'),
                   ),
                 ),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // AlertDialog(
+                      //   title: const Text('Delete User'),
+                      //   content: const Text('Are you sure you want to delete this user?'),
+                      //   actions: [
+                      //     TextButton(
+                      //       onPressed: () {
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: const Text('Cancel'),
+                      //     ),
+                      //     TextButton(
+                      //       onPressed: () {
+                      //         BlocProvider.of<AllUsersCubit>(context).deleteUser(
+                      //           id: user.id.toString(),
+                      //         );
+                      //         Navigator.pop(context);
+                      //       },
+                      //       child: const Text('Delete User'),
+                      //     ),
+                      //   ],
+                      // );
+                      
+                      BlocProvider.of<AllUsersCubit>(context).deleteUser(
+                        id: user.id.toString(),
+                     );
+                     
+                      Navigator.pop(context);
+                    },
+                    
+                    child: const Text('Delete User'),
+                  ),
+                ),
+
               ],
             ),
           ),

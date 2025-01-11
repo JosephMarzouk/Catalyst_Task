@@ -42,18 +42,22 @@ class UserCard extends StatelessWidget {
             const SizedBox(width: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Name : ${user.name}',
-                    style: TextStyle(
-                        fontSize: MediaQuery.sizeOf(context).width * 0.037),
-                  ),
-                  Text('Role : ${user.role}'),
-                  Text('Phone : ${user.phone}'),
-                ],
+              child: Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      
+                      'Name : ${user.name}',
+                      style: TextStyle(
+                          fontSize: MediaQuery.sizeOf(context).width * 0.04),
+                    ),
+                    Text('Role : ${user.role}'),
+                    Text('Phone : ${user.phone}'),
+                  ],
+                ),
               ),
             ),
           ],

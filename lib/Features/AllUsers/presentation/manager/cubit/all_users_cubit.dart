@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:catalyst_technical_task/Features/AllUsers/Data/models/user_model.dart';
 import 'package:catalyst_technical_task/Features/AllUsers/Data/repos/AllUserRepo.dart';
-import 'package:catalyst_technical_task/Features/CreateNewUser/Presentation/VIews/CreateNewUser.dart';
 import 'package:equatable/equatable.dart';
 
 part 'all_users_state.dart';
@@ -9,9 +8,10 @@ part 'all_users_state.dart';
 class AllUsersCubit extends Cubit<AllUsersState> {
   AllUsersCubit(this.allUserRepo) : super(AllUsersInitial());
 
+
   final AllUserRepo allUserRepo;
 
-  Future<void> getAllUsers() async {
+  Future <void> getAllUsers() async {
     try {
       emit(AllUsersLoading());
       final users = await allUserRepo.getAllUsers();
@@ -21,7 +21,7 @@ class AllUsersCubit extends Cubit<AllUsersState> {
     }
   }
 
-  Future<void> getAllOwners() async {
+  Future <void> getAllOwners() async {
     try {
       emit(AllOwnersLoading());
       final users = await allUserRepo.getAllOwners();
@@ -30,8 +30,7 @@ class AllUsersCubit extends Cubit<AllUsersState> {
       emit(AllOwnersFailure(error: e.toString()));
     }
   }
-
-  Future<void> getAllAdmins() async {
+  Future <void> getAllAdmins() async {
     try {
       emit(AllAdminsLoading());
       final admins = await allUserRepo.getAllAdmins();
@@ -41,7 +40,7 @@ class AllUsersCubit extends Cubit<AllUsersState> {
     }
   }
 
-  Future<void> getAllClients() async {
+  Future <void> getAllClients() async {
     try {
       emit(AllClientsLoading());
       final clients = await allUserRepo.getAllClients();
@@ -50,11 +49,10 @@ class AllUsersCubit extends Cubit<AllUsersState> {
       emit(AllClientsFailure(error: e.toString()));
     }
   }
-
-  Future<void> createNewUser({required Map<String, dynamic> body}) async {
+  Future <void> createNewUser( {required Map<String, dynamic> body}) async {
     try {
       emit(CreateNewUserLoading());
-      var newUser = await allUserRepo.createUsers(body: body);
+      var newUser= await allUserRepo.createUsers(body: body);
       print(newUser);
       emit(CreateNewUserSucess());
     } catch (e) {
@@ -62,10 +60,21 @@ class AllUsersCubit extends Cubit<AllUsersState> {
     }
   }
 
-  Future<void> editUser({required Map<String, dynamic> body}) async {
+  Future <void> editUser( {required Map<String, dynamic> body}) async {
     try {
       emit(EditUserSucess());
-      var updatedUser = await allUserRepo.updateUsers(body: body);
+      var updatedUser= await allUserRepo.updateUsers(body: body);
+      print(updatedUser);
+      emit(EditUserSucess());
+    } catch (e) {
+      emit(EditUserFailure(error: e.toString()));
+    }
+  }
+
+  Future <void> deleteUser( {required String id}) async {
+    try {
+      emit(EditUserSucess());
+      var updatedUser= await allUserRepo.deleteUsers(id: id);
       print(updatedUser);
       emit(EditUserSucess());
     } catch (e) {

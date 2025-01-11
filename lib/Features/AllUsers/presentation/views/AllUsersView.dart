@@ -1,6 +1,6 @@
 import 'package:catalyst_technical_task/Features/AllUsers/presentation/widgets/RadioButtons.dart';
 import 'package:catalyst_technical_task/Features/AllUsers/presentation/widgets/UsersList.dart';
-import 'package:catalyst_technical_task/Features/CreateNewUser/Presentation/VIews/CreateNewUser.dart';
+import 'package:catalyst_technical_task/Features/CreateAndEditUsers/Presentation/VIews/CreateNewUser.dart';
 import 'package:flutter/material.dart';
 
 class AllUsersView extends StatelessWidget {
@@ -15,10 +15,10 @@ class AllUsersView extends StatelessWidget {
         elevation: 0,
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Column(
           children: [
-            Flexible(
+             Flexible(
               flex: 1,
               child: Radiobuttons(),
             ),
@@ -41,3 +41,4 @@ class AllUsersView extends StatelessWidget {
     );
   }
 }
+
