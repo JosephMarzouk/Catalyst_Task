@@ -1,3 +1,4 @@
+import 'package:catalyst_technical_task/DefultView.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Data/models/booking_model/booking_model.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Bookings/Presentation/manager/cubit/all_booking_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/widgets/CustomFormField.dart';
@@ -110,35 +111,35 @@ class EditBooking extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      // AlertDialog(
-                      //   title: const Text('Delete User'),
-                      //   content: const Text('Are you sure you want to delete this user?'),
-                      //   actions: [
-                      //     TextButton(
-                      //       onPressed: () {
-                      //         Navigator.pop(context);
-                      //       },
-                      //       child: const Text('Cancel'),
-                      //     ),
-                      //     TextButton(
-                      //       onPressed: () {
-                      //         BlocProvider.of<AllUsersCubit>(context).deleteUser(
-                      //           id: user.id.toString(),
-                      //         );
-                      //         Navigator.pop(context);
-                      //       },
-                      //       child: const Text('Delete User'),
-                      //     ),
-                      //   ],
-                      // );
-
-                      BlocProvider.of<AllBookingCubit>(context).deleteBooking(
-                        id: booking.id.toString(),
-                      );
-
-                      Navigator.pop(context);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Delete booking'),
+                              content: const Text(
+                                  'Are you sure you want to delete this booking?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    BlocProvider.of<AllBookingCubit>(context)
+                                        .deleteBooking(
+                                      id: booking.id.toString(),
+                                    );
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DefultView()));
+                                  },
+                                  child: const Text('Delete booking'),
+                                ),
+                              ],
+                            );
+                          });
                     },
-                    child: const Text('Delete Booking'),
+                    child: const Text('Delete booking'),
                   ),
                 ),
               ],
