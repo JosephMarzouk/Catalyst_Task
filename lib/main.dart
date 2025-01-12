@@ -5,6 +5,7 @@ import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/Data/repos/AllUsersRepoImp.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/manager/cubit/all_users_cubit.dart';
 import 'package:catalyst_technical_task/DefultView.dart';
+import 'package:catalyst_technical_task/Features/splash/views/SplashView.dart';
 import 'package:catalyst_technical_task/core/ServiceLocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +34,7 @@ class CatalystApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: DefultView(),
+        home: SplashView(),
       ),
     );
   }

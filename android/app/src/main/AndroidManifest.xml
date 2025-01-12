@@ -3,7 +3,7 @@
 
     <application
         android:hardwareAccelerated="true"
-        android:label="catalyst_technical_task"
+        android:label="catalyst"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

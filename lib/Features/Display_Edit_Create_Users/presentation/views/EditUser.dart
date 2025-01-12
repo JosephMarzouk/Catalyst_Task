@@ -1,3 +1,4 @@
+import 'package:catalyst_technical_task/DefultView.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/Data/models/user_model.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/manager/cubit/all_users_cubit.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Users/presentation/widgets/CustomFormField.dart';
@@ -129,33 +130,33 @@ class EditUser extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      // AlertDialog(
-                      //   title: const Text('Delete User'),
-                      //   content: const Text('Are you sure you want to delete this user?'),
-                      //   actions: [
-                      //     TextButton(
-                      //       onPressed: () {
-                      //         Navigator.pop(context);
-                      //       },
-                      //       child: const Text('Cancel'),
-                      //     ),
-                      //     TextButton(
-                      //       onPressed: () {
-                      //         BlocProvider.of<AllUsersCubit>(context).deleteUser(
-                      //           id: user.id.toString(),
-                      //         );
-                      //         Navigator.pop(context);
-                      //       },
-                      //       child: const Text('Delete User'),
-                      //     ),
-                      //   ],
-                      // );
-
-                      BlocProvider.of<AllUsersCubit>(context).deleteUser(
-                        id: user.id.toString(),
-                      );
-
-                      Navigator.pop(context);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Delete User'),
+                              content: const Text(
+                                  'Are you sure you want to delete this user?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    BlocProvider.of<AllUsersCubit>(context)
+                                        .deleteUser(
+                                      id: user.id.toString(),
+                                    );
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DefultView()));
+                                  },
+                                  child: const Text('Delete User'),
+                                ),
+                              ],
+                            );
+                          });
                     },
                     child: const Text('Delete User'),
                   ),

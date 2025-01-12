@@ -32,7 +32,7 @@ class UserCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage(user.profileImage!),
+                    image: NetworkImage(user.profileImage ?? 'https://via.placeholder.com/150'),
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
                   ),
