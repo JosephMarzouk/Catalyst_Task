@@ -122,7 +122,7 @@ class EditUser extends StatelessWidget {
                             ? newPhoneController.text
                             : user.phone,
                       });
-                      Navigator.pop(context);
+                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DefultView()));
                     },
                     child: const Text('Submit changes'),
                   ),
