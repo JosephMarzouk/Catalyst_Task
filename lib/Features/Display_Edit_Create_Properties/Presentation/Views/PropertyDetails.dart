@@ -1,6 +1,9 @@
+import 'package:catalyst_technical_task/DefultView.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/Data/models/properties_model/properties_model.dart';
 import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/Presentation/Widgets/VideoPlayer.dart';
+import 'package:catalyst_technical_task/Features/Display_Edit_Create_Properties/Presentation/manager/cubit/properties_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PropertyDetails extends StatelessWidget {
   final PropertiesModel property;
@@ -193,6 +196,42 @@ class PropertyDetails extends StatelessWidget {
                   ),
                 ],
               ),
+              
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Delete User'),
+                              content: const Text(
+                                  'Are you sure you want to delete this user?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    BlocProvider.of<PropertiesCubit>(context)
+                                        .deleteProperty(
+                                      id: property.id.toString(),
+                                    );
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DefultView()));
+                                  },
+                                  child: const Text('Delete User'),
+                                ),
+                              ],
+                            );
+                          });
+                    },
+                    child: const Text('Delete User'),
+                  ),
+                ),
+              
           ],
         ),
       ),
