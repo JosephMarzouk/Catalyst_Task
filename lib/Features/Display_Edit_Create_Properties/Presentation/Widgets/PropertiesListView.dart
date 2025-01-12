@@ -10,6 +10,7 @@ class PropertiesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      
       itemCount: properties.length,
       itemBuilder: (context, index) {
         return Padding(

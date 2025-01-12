@@ -39,7 +39,7 @@ final ApiService apiService;
     try {
       var data = await apiService.get(endPoint: 'properties');
       List<PropertiesModel> properties = [];
-      for (int i=0; i< 100; i++) {
+      for (int i=0; i< 300; i++) {
        // print(data );
         properties.add(PropertiesModel.fromJson(data[i]));
       }

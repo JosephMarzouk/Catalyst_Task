@@ -87,7 +87,7 @@ class AllBookingsView extends StatelessWidget {
           return Center(
             child: GestureDetector(
               onTap: () {
-              //  BlocProvider.of<AllBookingCubit>(context).getAllBookings();
+              
               },
               child: const Text(
                 'No bookings available.',
